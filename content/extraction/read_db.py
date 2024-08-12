@@ -2,8 +2,8 @@ from pathlib import Path
 import pandas as pd
 import os
 
-def read_file(engine):
-    path = r'Z:\1. Coordinadores\Asignaciones\Naturgy\Bases\Nueva_asignacion'
+def read_file(path):
+    print(path)
     list_file_repository = os.listdir(path)
     dfs = []
     dfs_2=[]
@@ -13,6 +13,7 @@ def read_file(engine):
         df_mail = pd.read_excel(name_file, sheet_name='BASE CLIENTE')
         dfs.append(df_mail)
         df_sinfin = pd.read_excel(name_file, sheet_name='SINFIN')
+        df_sinfin['name_file'] = name
         dfs_2.append(df_sinfin)
         
     df_mail_repository = pd.concat(dfs, ignore_index=True)
